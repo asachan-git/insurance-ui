@@ -12,11 +12,11 @@
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
-        "module": "esnext",
+        "module": "amd",
         "moduleResolution": "node",
         "resolveJsonModule": true,
-        "isolatedModules": true,
         "noEmit": true,
+        "outFile": "dist/bundle.js",
         "jsx": "react-jsx"
     },
 }
