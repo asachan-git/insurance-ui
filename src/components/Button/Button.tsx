@@ -1,22 +1,25 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-interface ButtonProps {
+interface ButtonStyleProps {
   variant: "outlined" | "filled";
+  style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+interface ButtonProps extends ButtonStyleProps {
   iconBefore?: React.ReactNode;
   iconAfter?: React.ReactNode;
   children: string;
-  style?: React.CSSProperties;
-  onClick?: () => void;
 }
 
-const ButtonStyled = styled.button<ButtonProps>`
+const ButtonStyle = styled.button<ButtonStyleProps>`
   padding: 8px 16px;
-  border: ${(props: ButtonProps) =>
+  border: ${(props: ButtonStyleProps) =>
     props.variant === "filled" ? "none" : "1px solid red"};
-  background-color: ${(props: ButtonProps) =>
+  background-color: ${(props: ButtonStyleProps) =>
     props.variant === "filled" ? "#FF8080" : "transparent"};
-  color: ${(props: ButtonProps) =>
+  color: ${(props: ButtonStyleProps) =>
     props.variant === "filled" ? "#fff" : "#333"};
   border-radius: 8px;
   cursor: pointer;
@@ -41,11 +44,11 @@ const Button: React.FC<ButtonProps> = ({
   onClick = () => {},
 }) => {
   return (
-    <ButtonStyled style={style} variant={variant} onClick={onClick}>
+    <ButtonStyle style={style} variant={variant} onClick={onClick}>
       {iconBefore && iconBefore}
       {children}
       {iconAfter && iconAfter}
-    </ButtonStyled>
+    </ButtonStyle>
   );
 };
 
